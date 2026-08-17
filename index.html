@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения, Папа!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- -----------------------------СТРАНИЦА 1---------------------------------------- -->
+
+    <div id="start-page" class="page active">
+        <!-- Начальная преветсвенная страница -->
+         <h1>Добро пожаловать в игру <br>"Кто хочет стать тортоедом?"!</h1>
+         <button type="button" data-target="enter-name" >Продолжить..</button>
+    </div>
+
+<!-- -----------------------------СТРАНИЦА 2---------------------------------------- -->
+
+    <div id="enter-name" class="page">
+        <!-- Кто хочет стать тортоедом-->
+        <h2>Для начала введите ваш ник (имя)</h2>
+        <input id="name" type="text" value="" placeholder="Ваше имя">
+        <button type="button" data-target="first-question">Подтвердить</button>
+    </div>
+
+<!-- -----------------------------СТРАНИЦА 3---------------------------------------- -->    
+
+    <div id="first-question" class="page">
+        <!-- Первый вопрос 
+             При нажатии на неправильный вариант будет открываться страница с новым текстом и выбранный вариант пропадёт-->
+        <h2>Отлично, *имя*! Начнём игру</h2>
+        <p>Вы должны доказать, что вы <em>истинный</em> тортоед. Выберите причину, по которой <b>ИМЕННО ВЫ</b> должны сегодня скушать тортик????</p>
+        <button type="button" class="wrong-answer" data-message="СЕГОДНЯ НЕ НОВЫЙ ГОД!!!!!!!!!! не обманывать">Сегодня Новый Год</button> 
+        <button type="button" class="wrong-answer" data-message="Логично.... Но я Вам не верю" >Я тортоед!!!</button>
+        <button type="button" data-target="second-question">У меня День Рождения</button>
+        <button type="button" class="wrong-answer" data-message="Так нечестно..">Я знаю разработчика этого сайта! Сюда мне торт скорей!</button>
+    </div>
+       
+<!-- -----------------------------СТРАНИЦА 4---------------------------------------- -->
+
+    <div id="second-question" class="page">
+         <!-- Второй вопрос -->
+         <h2>Огооо! Поздравляем!!</h2>
+         <p>Тогда вы как тортоед, можете выбрать, какой торт вы хотите съесть!</p>
+         <button type="button" data-target="baking" data-choice="1" ><img src="images/1.jpg" width="250" height="200"></button>
+         <button type="button" data-target="baking" data-choice="2" ><img src="images/2.jpg" width="250" height="200"></button>
+         <button type="button" data-target="baking" data-choice="3" ><img src="images/3.jpg" width="250" height="200"></button>
+         <button type="button" data-target="baking" data-choice="4" ><img src="images/4.jpg" width="250" height="200"></button>
+    </div>
+
+<!-- -----------------------------СТРАНИЦА: ТОРТ ГОТОВИТСЯ---------------------------------------- -->
+    <div id="baking" class="page">
+        <h2>🥄 Тортик уже в духовке!</h2>
+        <p>Подождите немного, скоро он будет готов...</p>
+        <!-- Ваша гифка -->
+        <img src="images/cooking.gif" alt="Торт выпекается" >
+        <br>
+    </div>
+
+<!-- -----------------------------СТРАНИЦА 5 ПРИ НЕПРАВИЛЬНОМ ВЫБОРЕ---------------------------------------- -->
+
+    <div id="fail" class="page">
+        <!-- Полуфинал v1-->
+         <h2>Ой.. Походу духовка сломалась и приготовила что-то не то...</h2>
+         <p>Приготовился меренговый рулет!! Теперь он Ваш.</p>
+         <button type="button" data-target="timer-to-present">
+            <figure>
+                <img src="images/3.jpg" width="250" height="200">
+                <figcaption>P.S. Нажмите, чтобы скушать!</figcaption>
+            </figure>
+        </button>
+    </div>
+
+<!-- -----------------------------СТРАНИЦА 5 ПРИ ПРАВИЛЬНОМ ВЫБОРЕ---------------------------------------- -->
+
+    <div id="success" class="page">
+        <!-- Полуфинал v2-->
+         <h2>Ого! Духовка отлично справилась и приготовила то, что нужно!</h2>
+         <p>Вот ваш меренговый рулет!!</p>
+         <button type="button" data-target="timer-to-present">
+            <figure>
+                <img src="images/3.jpg" width="250" height="200">
+                <figcaption>P.S. Нажмите, чтобы скушать!</figcaption>
+            </figure>
+        </button>
+    </div>   
+
+<!-- -----------------------------СТРАНИЦА 6---------------------------------------- -->
+
+    <div id="third-question" class="page">
+        <!-- Третий и последний вопрос -->
+         <h2>Надеемся рулет вышел очень вкусным! </h2>
+         <p>А теперь последний, но не по значимости! Самый самый важный вопрос. За какое время истинный тортоед съедает свой торт!?</p>
+         <label for="time">Введите время в секундах:</label>
+         <input id="time" type="number" min="60" max="3600">
+         <button type="button" data-target="baking">Подтвердить</button>
+    </div>
+    
+<!-- -----------------------------СТРАНИЦА 7---------------------------------------- -->
+
+    <div id="timer-to-present" class="page">
+        <h2>Ну вот и всё! Поздравляем с прохождением нашей мини-игры!! </h2>
+        <p>Так как Вы завершили игру с отличием, Вам полагается подарок!</p>
+        <p>Пока Вы не видели, мы спрятали сюрприз в Вашей комнате... Найдите его! Время пошло!</p>
+        <p>Осталось:<span id="timerDisplay">5</span> секунд</p> 
+         <!-- Когда таймер вышел будет вопрос-->
+        <div id="questionBlock" style="display: none;">
+            <p>Вы справились со своей задачей?</p>
+            <label for="yes">Да</label>
+            <input type="radio" value="yes" id="yes" name="radio">
+            <label for="no">Нет</label>
+            <input type="radio" value="no" id="no" name="radio">
+            <button type="button" data-target="postcard">Ответить</button>
+        </div>
+    </div>
+
+<!-- -----------------------------СТРАНИЦА 8 ОТКРЫТКА---------------------------------------- -->
+
+    <div id="postcard" class="page">
+        <h2>Фуууухх! Вы молодец. Кстати вот цифровая версия открытки!</h2>
+        <p>Можете просто полюбоваться ей ещё раз, а можете скачать!</p>
+        <img src="images/coffee.png" alt="Открытка">
+        <button type="button" data-target="final">Налюбовался</button>
+    </div>
+
+<!-- -----------------------------СТРАНИЦА ФИНАЛ---------------------------------------- -->
+
+    <div id="final" class="page">
+        <h2>Конец игры! Спасибо за прохождение и ещё раз с Днём Рождения!</h2>
+        <p>P.S. От Вашей любимой дочи</p>
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО ДЛЯ ПРОСМОТРА КАРТИНКИ ===== -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <div class="modal-content-wrapper">
+            <img id="modalImage" src="images/coffee.png" alt="Увеличенная картинка">
+        </div>
+        <div class="modal-controls">
+            <button id="downloadBtn">📥 Скачать</button>
+        </div>
+    </div>
+
+</body>
+</html>

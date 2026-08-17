@@ -1,0 +1,289 @@
+/* ------------------------------------------------
+   КОФЕЙНЫЙ МИНИМАЛИЗМ + БОЛЬШАЯ КАРТИНКА ЗА БЛОКОМ
+--------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #faf6f0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 300;
+    color: #3e2c1b;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+
+}
+
+/* БОЛЬШАЯ КАРТИНКА ЗА ВСЕМ */
+body::before {
+    content: '';
+    position: fixed;  /* фиксирована при прокрутке */
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;      /* 80% ширины окна – можно увеличить до 100vw */
+    height: 80vh;     /* 80% высоты окна */
+    background-image: url('images/coffee.png'); /* путь к вашей картинке */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.4;    /* очень прозрачная – регулируйте */
+    z-index: 0;
+    pointer-events: none; /* чтобы не мешала кликам */
+}
+
+/* БЛОКИ-СТРАНИЦЫ (поверх картинки) */
+.page {
+    display: none;
+    max-width: 560px;
+    width: 100%;
+    padding: 40px 35px;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 8px 30px rgba(62, 44, 27, 0.08);
+    text-align: center;
+    position: relative;
+    z-index: 1;  /* выше, чем ::before */
+    transition: all 0.2s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Остальные стили (заголовки, кнопки, поля) – без изменений */
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #3e2c1b;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #3e2c1b;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+}
+
+p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #5a4a3a;
+    margin: 12px 0;
+}
+
+em {
+    font-weight: 400;
+    color: #a67c4e;
+}
+
+b {
+    font-weight: 600;
+    color: #3e2c1b;
+}
+
+button {
+    display: inline-block;
+    margin: 8px 4px;
+    padding: 12px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    background: #8b6b4d;
+    color: #ffffff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.1s;
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(139, 107, 77, 0.15);
+}
+
+button:hover {
+    background: #6b4c2a;
+    transform: scale(1.02);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button img {
+    display: block;
+    border-radius: 16px;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+button img:hover {
+    transform: scale(1.02);
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 10px 16px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    border: 1.5px solid #e3d6c8;
+    border-radius: 40px;
+    width: 100%;
+    max-width: 260px;
+    background: #fcf9f6;
+    color: #3e2c1b;
+    outline: none;
+    transition: border-color 0.2s;
+    margin: 6px 0;
+}
+
+input:focus {
+    border-color: #a67c4e;
+}
+
+label {
+    font-weight: 300;
+    color: #5a4a3a;
+    margin: 0 12px 0 4px;
+}
+
+input[type="radio"] {
+    accent-color: #a67c4e;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+
+#questionBlock {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee5db;
+}
+
+#timerDisplay {
+    font-size: 40px;
+    font-weight: 600;
+    color: #a67c4e;
+    background: #faf6f0;
+    padding: 0 12px;
+    border-radius: 12px;
+    display: inline-block;
+    min-width: 60px;
+}
+
+a {
+    color: #a67c4e;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Делаем подпись заметной */
+figcaption {
+    font-size: 14px;
+    font-weight: 600;          /* жирный */
+    color: #3e2c1b;            /* тёмный шоколад, как заголовки */
+    background: rgba(255, 255, 255, 0.7); /* полупрозрачная подложка */
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;     /* чтобы подложка была только под текстом */
+    margin-top: 6px;
+}
+
+/* Модальное окно (фон) */
+.modal {
+    display: none; /* скрыто по умолчанию */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Когда модальное окно открыто */
+.modal.open {
+    display: flex;
+}
+
+/* Контейнер для картинки с прокруткой, если она больше экрана */
+.modal-content-wrapper {
+    width: 90vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Сама картинка в модалке */
+#modalImage {
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.25s ease;
+    cursor: grab;
+    border-radius: 8px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+/* Кнопка закрытия (крестик) */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+.modal-close:hover {
+    color: #bbb;
+}
+
+/* Панель управления (зум, скачать) */
+.modal-controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.modal-controls button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background: #8b6b4d;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.modal-controls button:hover {
+    background: #6b4c2a;
+}

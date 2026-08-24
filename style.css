@@ -30,7 +30,7 @@ body::before {
     content: '';
     position: fixed;  /* фиксирована при прокрутке */
     top: 53%;
-    left: 50%;
+    left: 50.5%;
     transform: translate(-50%, -50%);
     width: 80vw;      /* 80% ширины окна – можно увеличить до 100vw */
     height: 80vh;     /* 80% высоты окна */
@@ -286,4 +286,14 @@ figcaption {
 }
 .modal-controls button:hover {
     background: #6b4c2a;
+}
+
+/* Стили для страницы открытки */
+#postcard img {
+    display: block;          /* убираем лишние отступы снизу */
+    max-width: 90%;          /* картинка занимает 90% ширины блока */
+    height: auto;            /* сохраняем пропорции */
+    margin: 20px auto;       /* центрируем по горизонтали и добавляем отступ сверху/снизу */
+    border-radius: 16px;     /* скругление углов (опционально) */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* лёгкая тень для красоты */
 }

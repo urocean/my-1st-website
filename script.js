@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ----- 4. Таймер на странице с подарком -----
     var timerInterval = null;
-    var timeLeft = 5;
+    var timeLeft = 20;
 
     function startTimer() {
         if (timerInterval !== null) return;
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var timerDisplay = document.getElementById('timerDisplay');
         if (!timerDisplay) return;
 
-        timeLeft = 5;
+        timeLeft = 20;
         timerDisplay.textContent = timeLeft;
 
         var questionBlock = document.getElementById('questionBlock');
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('Модальное окно не найдено. Пропускаем настройку.');
     } else {
         var currentScale = 1;
-        var currentSrc = 'images/coffee.png';
+        var currentSrc = 'images/postcard.jpg';
 
         function openModal(imageSrc) {
             currentSrc = imageSrc;
@@ -173,18 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        if (downloadBtn) {
-            downloadBtn.onclick = function() {
-                if (currentSrc) {
-                    var link = document.createElement('a');
-                    link.href = currentSrc;
-                    link.download = currentSrc.split('/').pop() || 'image.png';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                }
-            };
-        }
+    
 
         // ----- 6. Обработчик клика по картинке в блоке postcard -----
         var postcardImg = document.querySelector('#postcard img');
@@ -195,6 +184,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (src) openModal(src);
             });
         }
+
+            // ----- 7. Обработка ввода времени и переход на нужную страницу -----
+    var submitTimeBtn = document.getElementById('submitTimeBtn');
+    if (submitTimeBtn) {
+        submitTimeBtn.addEventListener('click', function() {
+            var inputField = document.getElementById('time');
+            var minutes = parseInt(inputField.value);
+            
+            // Проверка на корректность ввода
+            if (isNaN(minutes) || minutes < 1) {
+                alert('Пожалуйста, введите число больше 0');
+                return;
+            }
+
+            // Определяем целевую страницу
+            var targetId = (minutes <= 5) ? 'fast-result' : 'slow-result';
+            
+            // Переключаем страницу
+            document.querySelectorAll('.page').forEach(function(page) {
+                page.classList.remove('active');
+            });
+            var targetPage = document.getElementById(targetId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            } else {
+                console.error('Страница ' + targetId + ' не найдена');
+            }
+        });
+    }
     }
 
 }); // конец DOMContentLoaded

@@ -65,7 +65,7 @@
         <!-- Полуфинал v1-->
          <h2>Ой.. Походу духовка сломалась и приготовила что-то не то...</h2>
          <p>Приготовился меренговый рулет!! Теперь он Ваш.</p>
-         <button type="button" data-target="timer-to-present">
+         <button type="button" data-target="third-question">
             <figure>
                 <img src="images/3.jpg" width="250" height="200">
                 <figcaption>P.S. Нажмите, чтобы скушать!</figcaption>
@@ -79,7 +79,7 @@
         <!-- Полуфинал v2-->
          <h2>Ого! Духовка отлично справилась и приготовила то, что нужно!</h2>
          <p>Вот ваш меренговый рулет!!</p>
-         <button type="button" data-target="timer-to-present">
+         <button type="button" data-target="third-question">
             <figure>
                 <img src="images/3.jpg" width="250" height="200">
                 <figcaption>P.S. Нажмите, чтобы скушать!</figcaption>
@@ -93,11 +93,29 @@
         <!-- Третий и последний вопрос -->
          <h2>Надеемся рулет вышел очень вкусным! </h2>
          <p>А теперь последний, но не по значимости! Самый самый важный вопрос. За какое время истинный тортоед съедает свой торт!?</p>
-         <label for="time">Введите время в секундах:</label>
-         <input id="time" type="number" min="60" max="3600">
-         <button type="button" data-target="baking">Подтвердить</button>
+         <label for="time">Введите время в минутах:</label>
+         <input id="time" type="number" min="1" max="3600">
+         <button type="button" id="submitTimeBtn">Подтвердить</button>
     </div>
     
+<!-- -----------------------------СТРАНИЦА: БЫСТРЫЙ РЕЗУЛЬТАТ (<= 5 минут)---------------------------------------- -->
+    <div id="fast-result" class="page">
+        <h2>🍰 Вы справились молниеносно!</h2>
+        <p>Истинный тортоед съедает торт меньше чем за 5 минут! Вы — легенда!</p>
+        <img src="images/fast.gif" alt="Быстро съел торт" style="max-width: 80%; border-radius: 16px;">
+        <br>
+        <button type="button" data-target="timer-to-present">Получить подарок →</button>
+    </div>
+
+    <!-- -----------------------------СТРАНИЦА: МЕДЛЕННЫЙ РЕЗУЛЬТАТ (> 5 минут)---------------------------------------- -->
+    <div id="slow-result" class="page">
+        <h2>☕ Не торопитесь, наслаждайтесь!</h2>
+        <p>Вы любите растягивать удовольствие. Вкус торта становится только глубже!</p>
+        <img src="images/slow.gif" alt="Медленно ест торт" style="max-width: 80%; border-radius: 16px;">
+        <br>
+        <button type="button" data-target="timer-to-present">Получить подарок →</button>
+    </div>
+
 <!-- -----------------------------СТРАНИЦА 7---------------------------------------- -->
 
     <div id="timer-to-present" class="page">
@@ -120,8 +138,8 @@
 
     <div id="postcard" class="page">
         <h2>Фуууухх! Вы молодец. Кстати вот цифровая версия открытки!</h2>
-        <p>Можете просто полюбоваться ей ещё раз, а можете скачать!</p>
-        <img src="images/coffee.png" alt="Открытка">
+        <p>Можете просто полюбоваться ей ещё раз!</p>
+        <img src="images/postcard.jpg" alt="Открытка">
         <button type="button" data-target="final">Налюбовался</button>
     </div>
 
@@ -138,10 +156,7 @@
     <div id="imageModal" class="modal">
         <span class="modal-close" id="modalClose">&times;</span>
         <div class="modal-content-wrapper">
-            <img id="modalImage" src="images/coffee.png" alt="Увеличенная картинка">
-        </div>
-        <div class="modal-controls">
-            <button id="downloadBtn">📥 Скачать</button>
+            <img id="modalImage" src="images/postcard.jpg" width="300" height="200" alt="Увеличенная картинка">
         </div>
     </div>
 
